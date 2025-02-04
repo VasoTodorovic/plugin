@@ -1,0 +1,25 @@
+<idea-plugin>
+    <id>com.example.myplugin</id>
+    <name>My IntelliJ Plugin</name>
+    <vendor email="you@example.com">Your Name</vendor>
+
+    <description>
+        A simple IntelliJ plugin built with Kotlin and Gradle.
+    </description>
+
+    <depends>com.intellij.modules.platform</depends>
+
+    <actions>
+        <action class="org.example.demo2.MyAction" id="com.example.MyAction" text="Show Plugin Message">
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+        </action>
+        <action
+                class="org.example.demo2.FocusDiffPreviewAction"
+                id="FocusDiffPreviewAction"
+                text="Focus Diff Preview"
+                description="Focus the diff preview in the version control window"
+        >
+            <keyboard-shortcut keymap="Mac OS X" first-keystroke="ctrl alt D" />
+        </action>
+    </actions>
+</idea-plugin>
