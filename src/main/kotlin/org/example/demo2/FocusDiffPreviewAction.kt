@@ -1,22 +1,36 @@
 package org.example.demo2
+
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.project.Project
+import com.intellij.openapi.wm.ToolWindow
 import com.intellij.openapi.wm.ToolWindowManager
-import com.intellij.openapi.wm.ToolWindowId
-import com.intellij.openapi.ui.Messages
+class FocusDiffPreviewAction : AnAction() {
 
-class FocusDiffPreviewAction : AnAction("Focus Diff Preview") {
     override fun actionPerformed(e: AnActionEvent) {
-        val project = e.project ?: return
 
-        // Focus on the Version Control Tool Window
+        val project: Project = e.project ?: return
+
+        // Get the Version Control tool window
         val toolWindowManager = ToolWindowManager.getInstance(project)
-        val toolWindow = toolWindowManager.getToolWindow(ToolWindowId.VCS)
-        if (toolWindow != null) {
-            toolWindow.activate {
-                // Focus on the diff preview inside the version control tool window
-                val vcsContent = toolWindow.contentManager.selectedContent.
+        val vcsToolWindow = toolWindowManager.getToolWindow("Version Control")
+
+        // If the VCS tool window is available, activate it
+        vcsToolWindow?.activate {
+            // Focus on the changes tab (you can customize this as needed)
+            focusOnChangesTab(project)
+        }
+    }
+
+    private fun focusOnChangesTab(project: Project) {
+        // Activate the "Changes" tab within the VCS tool window (this is a default behavior)
+        val toolWindowManager = ToolWindowManager.getInstance(project)
+        val vcsToolWindow = toolWindowManager.getToolWindow("Version Control")
+
+        vcsToolWindow?.let {
+            // Open the changes panel (diff view is usually accessible from here)
+            it.show {
+                // Trigger additional actions here if needed, e.g., displaying files, changes, etc.
             }
         }
     }

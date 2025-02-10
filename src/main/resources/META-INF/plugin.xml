@@ -8,15 +8,17 @@
     </description>
 
     <depends>com.intellij.modules.platform</depends>
-
     <actions>
-        <action class="org.example.demo2.MyAction" id="com.example.MyAction" text="Show Plugin Message">
+        <action class="org.example.demo2.MyAction" id="com.example.MyAction" text="Show Popup List">
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+        </action>
+        <action class="org.example.demo2.ShowPopupListAction" id="com.example.Popup" text="Show Plugin Message">
             <add-to-group group-id="ToolsMenu" anchor="last"/>
         </action>
         <action
                 class="org.example.demo2.FocusDiffPreviewAction"
-                id="FocusDiffPreviewAction"
-                text="Focus Diff Preview"
+                id="PopUpMessage"
+                text="Pop up"
                 description="Focus the diff preview in the version control window"
         >
             <keyboard-shortcut keymap="Mac OS X" first-keystroke="ctrl alt D" />
