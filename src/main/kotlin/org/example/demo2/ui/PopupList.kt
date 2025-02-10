@@ -38,6 +38,7 @@ class PopupList {
         val panel = JPanel(BorderLayout())
         panel.preferredSize = Dimension(300, 150)  // Adjust size
         panel.add(JScrollPane(list), BorderLayout.WEST)
+        panel.add(detailLabel, BorderLayout.CENTER)
 
         // Ensure the popup can capture keyboard input
         panel.setFocusCycleRoot(true)
@@ -47,21 +48,19 @@ class PopupList {
             .createComponentPopupBuilder(panel, list)
             .setTitle("My Popup List")
             .setResizable(true)
-            .setMovable(true)
-            .setFocusable(true)
             .setRequestFocus(true)
+            .setMovable(true)
             .createPopup()
-
 
         popup.addListener(object : JBPopupListener {
             override fun beforeShown(event: LightweightWindowEvent) {
-                println("begining")
-                val isFocused=panel.requestFocusInWindow()
-                println(isFocused)
-                println(panel.hasFocus())
+                println(popup.isFocused()) //here will not have focus
+                println(list.hasFocus()) //here will not have focus
             }
 
             override fun onClosed(event: LightweightWindowEvent) {
+                println(popup.isFocused()) //here will not have focus
+                println(list.hasFocus()) //here WILL HAVE
                 println("end")
             }
         })
