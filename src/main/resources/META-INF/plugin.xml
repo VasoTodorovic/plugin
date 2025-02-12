@@ -15,6 +15,11 @@
         <action class="org.example.demo2.ShowPopupListAction" id="com.example.Popup" text="Show Plugin Message">
             <add-to-group group-id="ToolsMenu" anchor="last"/>
         </action>
+
+        <action class="org.example.demo2.GrabBookmark" id="com.example.GrabBookmark" text="Show Plugin Message">
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+        </action>
+
         <action
                 class="org.example.demo2.FocusDiffPreviewAction"
                 id="PopUpMessage"

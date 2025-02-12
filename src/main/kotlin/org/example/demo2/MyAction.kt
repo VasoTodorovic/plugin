@@ -18,6 +18,14 @@ class MyAction : AnAction("Show Message") {
     }
 
 }
+class  GrabBookmark : AnAction("Grab Bookmark"){
+    override  fun actionPerformed(event: AnActionEvent){
+        val project=event.project?:return
+       val popup = PopupList().grabBookmark(project)
+
+
+    }
+}
 
 class ShowPopupListAction : AnAction("Show Popup List") {
     override fun actionPerformed(event: AnActionEvent) {

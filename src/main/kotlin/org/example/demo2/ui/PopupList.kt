@@ -1,3 +1,7 @@
+import com.intellij.ide.bookmark.BookmarkGroup
+import com.intellij.ide.bookmark.BookmarksManager
+import com.intellij.ide.bookmarks.BookmarkManager
+import com.intellij.openapi.project.Project
 import com.intellij.openapi.ui.popup.JBPopup
 import com.intellij.openapi.ui.popup.JBPopupFactory
 import com.intellij.openapi.ui.popup.JBPopupListener
@@ -13,6 +17,27 @@ import javax.swing.JFrame;
 
 
 class PopupList {
+
+
+    fun grabBookmark(project: Project) {
+        val bookmarksManager=BookmarksManager.getInstance(project)
+        if (bookmarksManager != null) {
+            val bookmarkList=bookmarksManager.bookmarks
+            val bookmarkGroups= bookmarksManager.groups
+            for (bookmarkGroup in bookmarkGroups) {
+                println(bookmarkGroup.name)
+            }
+            for (bookmark in bookmarkList) {
+                val map=bookmark.attributes
+                for (entry in map) {
+                    println(entry.key)
+                    println(entry.value)
+                }
+            }
+        }
+    }
+
+
     fun create(): JBPopup {
         val items = listOf("Alice", "Bob", "Charlie", "David")
 
